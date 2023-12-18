@@ -1,0 +1,26 @@
+
+using System;
+
+class Program
+{
+
+    public static double CalcularGorjeta(double valorGasto, double percentualGorjeta)
+    {
+        double gorjeta = (percentualGorjeta / 100) * valorGasto;
+        return gorjeta;
+    }
+
+    public static void Main(string[] args) // decorar isso
+    {
+        Console.WriteLine("Informe o valor gasto no restaurante: ");
+        double valorGasto = double.Parse(Console.ReadLine());
+        Console.WriteLine("Informe o percentual de gorjeta: ");
+        double percentualGorjeta = double.Parse(Console.ReadLine());
+
+        double gorjeta = CalcularGorjeta(valorGasto, percentualGorjeta);
+        Console.WriteLine($"O valor da gorjeta é R$ {gorjeta:F2}");
+        Console.WriteLine($"O valor total é ser pago é R$ {(valorGasto + gorjeta):F2}");
+
+        Console.ReadLine();
+    }
+}
