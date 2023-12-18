@@ -1,0 +1,35 @@
+using System;
+
+class Program
+{
+    public static void PesoIdeal(double altura, char sexo)
+    {
+        altura = altura / 100; 
+
+        if (char.ToUpper(sexo) == 'H')
+        {
+            Console.WriteLine($"Peso ideal: {(72.7 * altura) - 58} kg");
+        }
+        else if (char.ToUpper(sexo) == 'M')
+        {
+            Console.WriteLine($"Peso ideal: {(62.1 * altura) - 44.7} kg");
+        }
+        else
+        {
+            Console.WriteLine("Sexo inválido. Use 'H' para homem ou 'M' para mulher.");
+        }
+    }
+
+    public static void Main(string[] args)
+    {
+        double altura;
+        char sexo;
+        Console.WriteLine("Informe a sua altura em centímetros: ");
+        altura = double.Parse(Console.ReadLine());
+        Console.WriteLine("Informe o seu sexo (H ou M): ");
+        sexo = char.Parse(Console.ReadLine());
+        PesoIdeal(altura, sexo);
+
+        Console.ReadLine();
+    }
+}
