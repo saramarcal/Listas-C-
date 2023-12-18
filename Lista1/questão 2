@@ -1,0 +1,29 @@
+using System;
+
+class Program
+{
+
+    public static double CalcularFracao(double numerador, double denominador)
+    {
+        double resultado = numerador / denominador;
+        return resultado;
+    }
+
+    public static void Main(string[] args)
+    {
+        Console.WriteLine("Informe o numerador:");
+        double numerador = double.Parse(Console.ReadLine());
+        Console.WriteLine("Informe o denominador:");
+        double denominador = double.Parse(Console.ReadLine());
+        if (denominador != 0)
+        {
+            double resultado = CalcularFracao(numerador, denominador);
+            Console.WriteLine($"O resultado é: {resultado.ToString("F2")}");
+        }
+
+        else
+            Console.WriteLine("ERRO! O deominador deve ser diferente de 0");
+
+        Console.ReadLine();
+    }
+}
