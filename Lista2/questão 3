@@ -1,0 +1,48 @@
+using System;
+
+class Program
+{
+    public static void VerificarCarteira(int idade, int tempo, char tipoHab)
+    {
+        if (idade >= 21)
+        {
+            if (tipoHab == 'B' || tipoHab == 'b')
+            {
+                if (tempo >= 2)
+                    Console.WriteLine("Você possui os requisitos necessários para tirar uma carteira de habilitação do tipo D!");
+                else Console.WriteLine("Você não possui tempo mínimo de 2 anos na categoria B.");
+            }
+            else if (tipoHab == 'C' || tipoHab == 'c')
+            {
+                if (tempo >= 1)
+                    Console.WriteLine("Você possui os requisitos necessários para tirar uma carteira de habilitação do tipo D!");
+                else Console.WriteLine("Você não possui tempo mínimo de 1 ano na categoria C.");
+            }
+            else
+            {
+                Console.WriteLine("Você não possui o tipo de habilitação necessária para tirar uma carteira de habilitação do tipo D.");
+            }
+
+        }
+        else Console.WriteLine("Você não possui 21 anos completos.");
+
+    }
+
+    public static void Main(string[] args)
+    {
+        int idade, tempo;
+        Console.WriteLine("Informe a sua idade: ");
+        idade = int.Parse(Console.ReadLine());
+
+        char tipoHab;
+        Console.WriteLine("Informe o tipo de habilitação: ");
+        tipoHab = char.Parse(Console.ReadLine());
+        Console.WriteLine("Informe o tempo que você possui carteira de habilitação: ");
+        tempo = int.Parse(Console.ReadLine());
+        VerificarCarteira(idade, tempo, tipoHab);
+
+
+
+        Console.ReadLine();
+    }
+}
