@@ -1,0 +1,25 @@
+using System;
+
+class Program
+{
+
+    public static void TrocarValores(double varA, double varB)
+    {
+        double varC = varA;
+        varA = varB;
+        varB = varC;
+    }
+
+    public static void Main(string[] args)
+    {
+        Console.WriteLine("Informe um valor para a variável A: ");
+        double varA = double.Parse(Console.ReadLine());
+        Console.WriteLine("Informe um valor para a variável B: ");
+        double varB = double.Parse(Console.ReadLine());
+        TrocarValores(ref varA, ref varB);
+        Console.WriteLine($"Varável A: {varA}");
+        Console.WriteLine($"Variável B: {varB}");
+
+        Console.ReadLine();
+    }
+}
