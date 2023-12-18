@@ -1,0 +1,25 @@
+using System;
+
+class Program
+{
+    public static void CalcularQuadrado(double lado) // código otiizado pelo chat gpt, transformando 3 metodos em apenas 1
+    {
+        double perimetro = 4 * lado;
+        double area = lado * lado;
+        double diagonal = Math.Sqrt(2) * lado;
+
+        Console.WriteLine($"Perímetro do quadrado: {perimetro}");
+        Console.WriteLine($"Área do quadrado: {area}");
+        Console.WriteLine($"Diagonal do quadrado: {diagonal}");
+    }
+
+    public static void Main(string[] args)
+    {
+        Console.WriteLine("Digite o lado do quadrado: ");
+        double lado = double.Parse(Console.ReadLine());
+
+        CalcularQuadrado(lado);
+
+        Console.ReadLine();
+    }
+}
