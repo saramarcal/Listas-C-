@@ -1,0 +1,48 @@
+using System;
+
+class Program
+{
+    public static void CompararIdades(int idade1, int idade2, int idade3)
+    {
+        int maior = idade1, menor = idade1;
+
+        // DESCOBRE O MENOR
+        if (idade2 < menor)
+        {
+            menor = idade2;
+        }
+        else if (idade3 < menor)
+        {
+            menor = idade3;
+        }
+
+        // DESCOBRE O MAIOR
+        if (idade2 > maior)
+        {
+            maior = idade2;
+        }
+        else if (idade3 > maior)
+        {
+            maior = idade3;
+        }
+
+        Console.WriteLine($"A maior idade é: {maior}");
+        Console.WriteLine($"A menor idade é: {menor}");
+    }
+
+    public static void Main(string[] args)
+    {
+        Console.WriteLine("Digite a primeira idade: ");
+        int idade1 = int.Parse(Console.ReadLine());
+
+        Console.WriteLine("Digite a segunda idade: ");
+        int idade2 = int.Parse(Console.ReadLine());
+
+        Console.WriteLine("Digite a terceira idade: ");
+        int idade3 = int.Parse(Console.ReadLine());
+
+        CompararIdades(idade1, idade2, idade3);
+
+        Console.ReadLine();
+    }
+}
