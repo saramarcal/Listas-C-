@@ -1,0 +1,23 @@
+using System;
+
+class Program
+{
+
+    public static double ConversorCelsius(double temperaturaF)
+    {
+        double resultado = (5 * (temperaturaF - 32) / 9);
+        return resultado;
+    }
+
+    public static void Main(string[] args)
+    {
+        Console.WriteLine("Informe a temperatua em graus Fahrenheit: ");
+        double temperaturaF = double.Parse(Console.ReadLine());
+
+
+        double resultado = ConversorCelsius(temperaturaF);
+        Console.WriteLine($"O resultado é: {resultado:F2} °C");
+
+        Console.ReadLine();
+    }
+}
