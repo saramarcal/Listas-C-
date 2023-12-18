@@ -1,0 +1,39 @@
+
+using System;
+
+class Program
+{
+
+    public static double CalcularPercentual(double numeroVotos, double totalVotos)
+    {
+        double resultado = (numeroVotos * 100) / totalVotos;
+        return resultado;
+    }
+
+    public static void Main(string[] args)
+    {
+        Console.WriteLine("Informe a quantidade de eleitores de um município: ");
+        double quantEleitores = double.Parse(Console.ReadLine());
+        Console.WriteLine("Informe o número de votos brancos: ");
+        double quantVotosBrancos = double.Parse(Console.ReadLine());
+        Console.WriteLine("Informe o número de votos nulos: ");
+        double quantVotosNulos = double.Parse(Console.ReadLine());
+        Console.WriteLine("Informe o número de votos válidos: ");
+        double quantVotosValidos = double.Parse(Console.ReadLine());
+        double total = quantVotosBrancos + quantVotosNulos + quantVotosValidos;
+
+        if (quantEleitores == total)
+        {
+            Console.WriteLine("A quantidade de votos corresponde a quantidade de eleitores!");
+            Console.WriteLine($"O percentual de votos brancos é: {CalcularPercentual(quantVotosBrancos, quantEleitores)} %");
+            Console.WriteLine($"O percentual de votos nulos é: {CalcularPercentual(quantVotosNulos, quantEleitores)} %");
+            Console.WriteLine($"O percentual de votos válidos é: {CalcularPercentual(quantVotosValidos, quantEleitores)}%");
+        }
+        else
+        {
+            Console.WriteLine("ERRO! A quantidade total de votos não corresponde à quantidade de eleitores.");
+        }
+
+        Console.ReadLine();
+    }
+}
