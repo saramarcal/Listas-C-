@@ -1,0 +1,31 @@
+using System;
+
+class Program
+{
+    public static double CalcularValorKilowatt(double salario)
+    {
+        return salario * 0.1 / 100; // 10% do salário mínimo (0.1 * salário mínimo)
+    }
+
+    public static double CalcularValorTotal(double valorKilowatt, double quantidadeKilowatt)
+    {
+        return valorKilowatt * quantidadeKilowatt;
+    }
+
+    public static void Main(string[] args)
+    {
+        Console.WriteLine("Informe o valor do salário mínimo: ");
+        double salario = double.Parse(Console.ReadLine());
+        
+        Console.WriteLine("Informe a quantidade de kilowatt gasto por uma residência: ");
+        double qtdKilowatt = double.Parse(Console.ReadLine());
+
+        double valorKilowatt = CalcularValorKilowatt(salario);
+        double valorTotal = CalcularValorTotal(valorKilowatt, qtdKilowatt);
+
+        Console.WriteLine($"O valor em reais de cada kilowatt é: R$ {valorKilowatt:F2}");
+        Console.WriteLine($"O valor total a ser pago é: R$ {valorTotal:F2}");
+
+        Console.ReadLine();
+    }
+}
