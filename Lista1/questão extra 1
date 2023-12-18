@@ -1,0 +1,26 @@
+using System;
+
+class Program
+{
+    public static int CalcularNumeroInvertido(int num)
+    {
+        int u = num / 1000;
+        int d = (num % 1000) / 100;
+        int c = (num % 100) / 10;
+        int m = num % 10;
+
+        int numFinal = m * 1000 + c * 100 + d * 10 + u;
+        return numFinal;
+    }
+
+    public static void Main(string[] args)
+    {
+        Console.WriteLine("Informe um número inteiro de quatro dígitos: ");
+        int numero = int.Parse(Console.ReadLine());
+
+        int numFinal = CalcularNumeroInvertido(numero);
+        Console.WriteLine("O número invertido é: " + numFinal);
+
+        Console.ReadLine();
+    }
+}
