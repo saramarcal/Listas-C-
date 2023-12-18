@@ -1,0 +1,33 @@
+using System;
+
+class Program
+{
+    public static void NumeroExtenso(int num)
+    {
+      string[] numeros = {"zero", "um", "dois", "três", "quatro", "cinco", "seis", "sete", "oito", "nove", "dez"};
+      if (num >= 0 && num <= 10)
+      {
+        Console.WriteLine($"O número informado foi {numeros[num]}");
+      }
+      else
+      {
+        Console.WriteLine("ERRO! Informe um valor dentro do intervalo.");
+      }
+    }
+
+    public static void Main(string[] args)
+    {
+      Console.WriteLine("Digite um número entre 0 e 10: ");
+      try
+      {
+        int num = int.Parse(Console.ReadLine());
+        NumeroExtenso(num);
+      }
+      catch (FormatException e)
+      {
+          Console.WriteLine($"ERRO! Entrada inválida: {e.Message}. Por favor, insira um número válido.");
+      }
+
+        Console.ReadLine();
+    }
+}
