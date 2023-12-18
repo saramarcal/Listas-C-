@@ -1,0 +1,60 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Menu de opções: ");
+        Console.WriteLine("   1. Somar dois números.");
+        Console.WriteLine("   2. Subtrair dois números.");
+        Console.WriteLine("   3. Multiplicação de dois números.");
+        Console.WriteLine("   4. Divisão de dois números.");
+
+        Console.WriteLine("Informe sua opção: ");
+        int opcao = int.Parse(Console.ReadLine());
+
+        if (opcao >= 1 && opcao <= 4)
+        {
+            Console.WriteLine("Informe o primeiro número: ");
+            double num1 = double.Parse(Console.ReadLine());
+
+            Console.WriteLine("Informe o segundo número: ");
+            double num2 = double.Parse(Console.ReadLine());
+
+            double resultado = 0;
+
+            if (opcao == 1)
+            {
+                resultado = num1 + num2;
+            }
+            else if (opcao == 2)
+            {
+                resultado = num1 - num2;
+            }
+            else if (opcao == 3)
+            {
+                resultado = num1 * num2;
+            }
+            else if (opcao == 4)
+            {
+                if (num2 != 0)
+                {
+                    resultado = num1 / num2;
+                }
+                else
+                {
+                    Console.WriteLine("Erro: Divisão por zero.");
+                    return; 
+                }
+            }
+
+            Console.WriteLine($"Resultado: {resultado}");
+        }
+        else
+        {
+            Console.WriteLine("Opção inválida");
+        }
+
+        Console.ReadLine();
+    }
+}
