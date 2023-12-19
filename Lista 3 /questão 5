@@ -1,0 +1,92 @@
+using System;
+
+class Program
+{
+    public static void MostrarMenu()
+    {
+        Console.WriteLine("Menu de opções:");
+        Console.WriteLine("1. Novo salário");
+        Console.WriteLine("2. Férias");
+        Console.WriteLine("3. Décimo terceiro");
+        Console.WriteLine("4. Sair");
+    }
+
+    public static double Opcao1(double salario)
+    {
+        if (salario >= 0 && salario <= 999.99)
+        {
+            return salario * 1.15;
+        }
+        else if (salario >= 1000 && salario <= 2000)
+        {
+            return salario * 1.10;
+        }
+        else
+        {
+            return salario * 1.05;
+        }
+    }
+
+    public static double Opcao2(double salario)
+    {
+        return salario + (salario / 3);
+    }
+
+    public static double Opcao3(double salario, int meses)
+    {
+        return (salario * meses) / 12;
+    }
+
+    public static void Main(string[] args)
+    {
+        int opcao, mesesTrabalhados;
+        double salario;
+
+        do
+        {
+            MostrarMenu();
+            Console.Write("Informe a opção desejada: ");
+            opcao = int.Parse(Console.ReadLine());
+
+            switch (opcao)
+            {
+                case 1:
+                    Console.WriteLine("Opção 1 selecionada!");
+                    Console.WriteLine("Informe o salário: ");
+                    salario = double.Parse(Console.ReadLine());
+                    Console.WriteLine($"Novo salário: R$ {Opcao1(salario)}");
+                    break;
+                case 2:
+                    Console.WriteLine("Opção 2 selecionada!");
+                    Console.WriteLine("Informe o salário: ");
+                    salario = double.Parse(Console.ReadLine());
+                    Console.WriteLine($"Valor das férias: R$ {Opcao2(salario)}");
+                    break;
+                case 3:
+                    Console.WriteLine("Opção 3 selecionada!");
+                    do
+                    {
+                        Console.WriteLine("Informe o salário: ");
+                        salario = double.Parse(Console.ReadLine());
+                        Console.WriteLine("Informe o número de meses trabalhados: ");
+                        mesesTrabalhados = int.Parse(Console.ReadLine());
+                        if (mesesTrabalhados < 0 || mesesTrabalhados > 12)
+                        {
+                            Console.WriteLine("Valor inválido! Por favor, informe um número entre 0 e 12.");
+                        }
+                    } while (mesesTrabalhados < 0 || mesesTrabalhados > 12);
+                    Console.WriteLine($"Valor do décimo terceiro: R$ {Opcao3(salario, mesesTrabalhados)}");
+                    break;
+                case 4:
+                    Console.WriteLine("Saiu!");
+                    break;
+                default:
+                    Console.WriteLine("ERRO! Opção inválida");
+                    break;
+            }
+        } while (opcao != 4);
+
+        Console.ReadLine();
+    }
+}
+
