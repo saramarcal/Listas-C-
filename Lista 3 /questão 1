@@ -1,0 +1,42 @@
+using System;
+
+class Program
+{
+    public static void Main(string[] args)
+    {
+        int cont = 1;
+        double indiceDiario = 0;
+        double soma = 0;
+        double maior = double.MinValue;
+        double menor = double.MaxValue;
+        int diaMaximo = 0;
+        int diaMinimo = 0;
+
+        while (cont <= 31)
+        {
+            Console.WriteLine($"Informe o indice puliviometrico do dia {cont}");
+            indiceDiario = double.Parse(Console.ReadLine());
+            
+            soma += indiceDiario;
+            if (indiceDiario < menor)
+            {
+              menor = indiceDiario;
+              diaMinimo = cont;
+            }
+            if (indiceDiario > maior)
+            {
+              maior = indiceDiario;
+              diaMaximo = cont;
+            }
+            cont++;
+        }
+        double indiceMedio = soma / 31;
+        Console.WriteLine($"Indice pluviométrico médio: {indiceMedio}");
+        Console.WriteLine($"Índice pluviométrico mínimo: {menor} no dia {diaMinimo}");
+        Console.WriteLine($"Índice pluviométrico máximo: {maior} no dia {diaMaximo}");
+
+        
+
+        Console.ReadLine();
+    }
+}
