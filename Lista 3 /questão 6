@@ -1,0 +1,59 @@
+using System;
+
+class Program
+{
+    public static void Main(string[] args)
+    {
+        double salario, anosEstudo, somaSalarios = 0, somaAnosEstudos = 0, mediaSalario, mediaAnosEstudo, maiorSalario = double.MinValue, quantSalarioAte5000 = 0, percentualSalarioAte5000, quantAnosEstudos = 0, percentualPessoasMais15AnosEstudo;
+        char resposta;
+        int contHab = 0;
+
+        do
+        {
+            Console.WriteLine("Deseja informar os dados de um habitante? (S: sim, N: não)");
+            resposta = char.Parse(Console.ReadLine());
+
+            if (resposta == 'S' || resposta == 's')
+            {
+                contHab++;
+
+                Console.WriteLine("SISTEMA INFORMA: COLETANDO DADOS DO HABITANTE \n");
+
+                Console.WriteLine("Informe o salário: ");
+                salario = double.Parse(Console.ReadLine());
+                somaSalarios += salario;
+                if (salario > maiorSalario)
+                {
+                    maiorSalario = salario;
+                }
+                if (salario <= 5000)
+                {
+                    quantSalarioAte5000++;
+                }
+
+                Console.WriteLine("Informe a quantidade de anos de estudo: ");
+                anosEstudo = double.Parse(Console.ReadLine());
+                if (anosEstudo >= 15)
+                {
+                    quantAnosEstudos++;
+                }
+                somaAnosEstudos += anosEstudo;
+            }
+        }
+        while (resposta != 'N' && resposta != 'n');
+
+        mediaSalario = somaSalarios / contHab;
+        mediaAnosEstudo = somaAnosEstudos / contHab;
+        percentualSalarioAte5000 = (quantSalarioAte5000 / (double)contHab) * 100;
+        percentualPessoasMais15AnosEstudo = (quantAnosEstudos / (double)contHab) * 100;
+        Console.WriteLine();
+        Console.WriteLine("RESULTADOS: \n");
+        Console.WriteLine($"1. Média do salário da população: R${mediaSalario:F2}");
+        Console.WriteLine($"2. Média de anos de estudo: {mediaAnosEstudo:F1} anos");
+        Console.WriteLine($"3. Maior salário: R${maiorSalario:F2}");
+        Console.WriteLine($"4. Percentual de pessoas com salário até R$5000,00: {percentualSalarioAte5000:F2}%");
+        Console.WriteLine($"5. Percentual de pessoas com 15 ou mais anos de estudo: {percentualPessoasMais15AnosEstudo:F2}%");
+
+        Console.ReadLine();
+    }
+}
