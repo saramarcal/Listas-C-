@@ -1,0 +1,24 @@
+using System;
+
+class Program
+{
+
+    public static void Main(string[] args)
+    {
+      double litros;
+      string premio;
+      Console.WriteLine("Informe a quantidade de litros colocados no automóvel: ");
+      litros = double.Parse(Console.ReadLine());
+      /*if (litros < 10)
+      {
+          premio = "Chaveiro";
+      }
+      else
+          premio = "Ducha"; */
+      premio = (litros < 10) ? "Chaveiro" : "Ducha";
+      Console.WriteLine($"Parabéns,  você ganhou um(a) {premio}!");
+      Console.ReadLine();
+
+        Console.ReadLine();
+    }
+}
