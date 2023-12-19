@@ -1,0 +1,26 @@
+resolução corrigida pelo chat gpt
+
+using System;
+
+class Program
+{
+    public static void Main(string[] args)
+    {
+        Console.WriteLine("Informe um valor n inteiro e positivo: ");
+        int n = int.Parse(Console.ReadLine());
+
+        double soma = 1.0; // Inicializa a soma com 1 (primeiro termo da série)
+        double fatorial = 1.0; // Inicializa o fatorial com 1 (primeiro termo do fatorial)
+
+        for (int i = 1; i <= n; i++)
+        {
+            fatorial *= i; // Calcula o fatorial de i
+
+            soma += 1.0 / fatorial; // Adiciona o termo atual à soma
+        }
+
+        Console.WriteLine($"O valor da soma é: {soma}");
+
+        Console.ReadLine();
+    }
+}
