@@ -1,0 +1,47 @@
+using System;
+
+class Program
+{
+    public static void Main(string[] args)
+    {
+        int coordenadaX, coordenadaY;
+
+        try
+        {
+            do
+            {
+                Console.WriteLine("Informe as coordenadas (separadas por vígula): ");
+                string[] coordenadas = (Console.ReadLine().Split(","));
+                coordenadaX = int.Parse(coordenadas[0]);
+                coordenadaY = int.Parse(coordenadas[1]);
+
+                if (coordenadaX > 0 && coordenadaY > 0)
+                {
+                    Console.WriteLine($"{coordenadaX}, {coordenadaY}: primeiro quadrante");
+                }
+                else if (coordenadaX < 0 && coordenadaY > 0)
+                {
+                    Console.WriteLine($"{coordenadaX}, {coordenadaY}: segundo quadrante");
+                }
+                else if (coordenadaX < 0 && coordenadaY < 0)
+                {
+                    Console.WriteLine($"{coordenadaX}, {coordenadaY}: terceiro quadrante");
+                }
+                else if (coordenadaX > 0 && coordenadaY < 0)
+                {
+                    Console.WriteLine($"{coordenadaX}, {coordenadaY}: quarto quadrante");
+                }
+                else Console.WriteLine("Valores inválidos");
+
+            }
+            while (coordenadaX != 0 && coordenadaY != 0);
+        }
+        catch (FormatException e)
+        {
+            Console.WriteLine($"ERRO: {e}");
+        }
+
+        Console.ReadLine();
+    }
+}
+
