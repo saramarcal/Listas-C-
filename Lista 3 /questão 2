@@ -1,0 +1,60 @@
+using System;
+
+class Program
+{
+  public static double CalcularPorcentagem(double total, double quantidade)
+  {
+    double porcentagem = (quantidade * 100) / total;
+    return porcentagem;
+  }
+    
+  
+  public static void Main(string[] args)
+    {
+        Console.WriteLine("Informe um numero inteiro n: ");
+        double num = double.Parse(Console.ReadLine());
+        double idade;
+        double soma15 = 0;
+        double soma30 = 0;
+        double soma45 = 0;
+        double soma60 = 0;
+        double soma61 = 0;
+        for (int i = 1; i <= num; i++)
+        {
+            Console.WriteLine($"Informe a idade {i}");
+            idade = int.Parse(Console.ReadLine());
+          if (idade > 0)
+          {
+            if (idade >= 1 && idade <= 15)
+            {
+                soma15++;
+            }
+            else if (idade > 15 && idade <= 30)
+            {
+                soma30++;
+            }
+            else if (idade > 30 && idade <= 45)
+            {
+                soma45++;
+            }
+            else if (idade > 45 && idade <= 60)
+            {
+                soma60++;
+            }
+            else
+            {
+              soma61++;
+            }
+          }
+        }
+      
+        Console.WriteLine($"A quantidade de pessoas com idade entre 1 a 15 anos é {soma15}, com {CalcularPorcentagem(num, soma15)} %");
+        Console.WriteLine($"A quantidade de pessoas com idade entre 16 a 30 anos é {soma30}, com {CalcularPorcentagem(num, soma30)} %");
+        Console.WriteLine($"A quantidade de pessoas com idade entre 31 a 45 anos é {soma45}, com {CalcularPorcentagem(num, soma45)} %");
+        Console.WriteLine($"A quantidade de pessoas com idade entre 46 a 60 anos é {soma60}, com {CalcularPorcentagem(num, soma60)} %");
+        Console.WriteLine($"A quantidade de pessoas com idade ≥ 61 anos é {soma61}, com {CalcularPorcentagem(num, soma61)} %");
+
+        Console.ReadLine();
+    }
+}
+
