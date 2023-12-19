@@ -1,0 +1,30 @@
+using System;
+
+class Program
+{
+    public static void Main(string[] args)
+    {
+        double temperatura, menorTemperatura = double.MaxValue, maiorTemperatura = double.MinValue;
+        int diaMaiorTemperatura = 0, diaMenorTemperatura = 0;
+
+        for (int i = 1; i <= 31; i++)
+        {
+            Console.WriteLine($"Informe a temperaturado dia {i}: ");
+            temperatura = double.Parse(Console.ReadLine());
+            if (temperatura > maiorTemperatura)
+            {
+                maiorTemperatura = temperatura;
+                diaMaiorTemperatura = i;
+            }
+            if (temperatura < menorTemperatura)
+            {
+                menorTemperatura = temperatura;
+                diaMenorTemperatura = i;
+            }
+        }
+        Console.WriteLine($"A maior temperatura foi {maiorTemperatura}°C no dia {diaMaiorTemperatura}");
+        Console.WriteLine($"A menor temperatura foi {menorTemperatura}°C no dia {diaMenorTemperatura}");
+
+        Console.ReadLine();
+    }
+}
