@@ -1,0 +1,44 @@
+using System;
+
+class Program
+{
+    public static void Main(string[] args)
+    {
+        int[] vetor = new int[10];
+        int menor = int.MaxValue, maior = int.MinValue, posicaoMenor = -1;
+        for (int i = 0; i < vetor.Length; i++)
+        {
+            Console.WriteLine($"Informe o element {i} do vetor:");
+            vetor[i] = int.Parse(Console.ReadLine());
+            if (vetor[i] < menor)
+            {
+                menor = vetor[i];
+                posicaoMenor = i;
+            }
+            if (vetor[i] > maior)
+            {
+                maior = vetor[i];
+                int temp = vetor[1];
+                vetor[1] = maior;
+                vetor[i] = temp;
+            }
+
+        }
+
+        Console.WriteLine($"O menor elemento do vetor é {menor} e está na posição {posicaoMenor}");
+        Console.WriteLine("O vetor é:");
+        for (int i = 0; i < vetor.Length; i++)
+        {
+            if (i < vetor.Length - 1)
+            {
+                Console.Write(vetor[i] + ",");
+            }
+            else
+            {
+                Console.Write(vetor[i]);
+            }
+        }
+
+    Console.ReadLine();
+    }
+}
