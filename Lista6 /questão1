@@ -1,0 +1,39 @@
+using System;
+
+class Program
+{
+    public static double CalcularValorDoMetroQuadrado(double metrosProduzidos)
+    {
+        if (metrosProduzidos <= 10)
+        {
+            return metrosProduzidos * 10;
+        }
+        else if (metrosProduzidos > 10 && metrosProduzidos <= 20)
+        {
+            return metrosProduzidos * 11.5;
+        }
+        else
+        {
+            return metrosProduzidos * 13;
+        }
+    }
+
+    public static void Main(string[] args)
+    {
+        double valeAlimentacao, valeTrasporte, quantidadeMetros2Produzida, valorTotalPedreiro;
+        for (int i = 1; i <= 25; i++)
+        {
+            Console.WriteLine($"Informe o valor do vale-alimentação do pedreiro {i}: ");
+            valeAlimentacao = double.Parse(Console.ReadLine());
+            Console.WriteLine($"Informe o valor do vale transporte do pedreiro {i}: ");
+            valeTrasporte = double.Parse(Console.ReadLine());
+            Console.WriteLine($"Informe a quantidade de m² que o pedreiro {i} produziu: ");
+            quantidadeMetros2Produzida = double.Parse(Console.ReadLine());
+
+            valorTotalPedreiro = valeAlimentacao + (valeTrasporte * 2) + (CalcularValorDoMetroQuadrado(quantidadeMetros2Produzida));
+
+            Console.WriteLine($"O valor total do pedreiro {i} é: R${valorTotalPedreiro}");
+        }
+        Console.ReadLine();
+    }
+}
