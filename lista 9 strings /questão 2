@@ -1,0 +1,31 @@
+using System;
+
+class Program
+{
+    public static void Main(string[] args)
+    {
+      Console.WriteLine("Informe a string 1:");
+      string palavra1 = Console.ReadLine().ToLower();
+      Console.WriteLine("Informe a string 2:");
+      string palavra2 = Console.ReadLine().ToLower();
+     
+      bool teste = palavra1.Equals(palavra2);
+      if (teste == true)
+      {
+        Console.WriteLine("As strings são iguais");
+      }
+      else
+      {
+        Console.WriteLine("As strings são diferentes");
+        if (palavra1.Length > palavra2.Length)
+        {
+          Console.WriteLine("$ {palavra1} é maior que {palavra2}");
+        }
+        else
+        {
+          Console.WriteLine("$ {palavra2} é maior que {palavra1}");
+        }
+        Console.WriteLine($"Strings concatenadas: {palavra1 + palavra2}");
+      }
+    }
+}
