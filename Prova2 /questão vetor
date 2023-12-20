@@ -1,0 +1,50 @@
+using System;
+
+class Program {
+  public static void Main (string[] args) {
+    Console.Write("Quantidade de atores que participarão da competição: ");
+    int quantidadeAtores = int.Parse(Console.ReadLine());
+    
+    int[] votos = new int[quantidadeAtores];
+    string[] nomesAtores = new string[quantidadeAtores];
+
+    Console.WriteLine();
+
+    Console.WriteLine("Informe o nome dos atores: ");
+    for (int i = 0; i < quantidadeAtores; i++) 
+    {
+      Console.Write($"Nome do ator {i}: ");
+      nomesAtores[i] = Console.ReadLine();
+    }
+    Console.WriteLine();
+    for (int i = 0; i < 10; i++)
+    {
+      Console.Write($"Eleitor{i}, informe seu voto: ");
+      int voto = int.Parse(Console.ReadLine());
+      votos[voto]++;
+      
+    }
+    Console.WriteLine();
+
+    int maisVotado = 0, menosVotado = 0;
+    string nomeMaisVotado = "";
+
+    for (int i = 1; i < quantidadeAtores; i++)
+    {
+        if (votos[i] < votos[menosVotado])
+        {
+            menosVotado = i;
+        }
+      if (votos[i] > votos[maisVotado])
+      {
+        maisVotado = i;
+        nomeMaisVotado = nomesAtores[i];
+      }
+      
+    }
+
+    Console.WriteLine($"Numero do ator menos votado: {menosVotado}");
+    Console.WriteLine($"Nome do ator mais votado: {nomeMaisVotado}");
+    
+  }
+}
