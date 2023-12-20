@@ -1,0 +1,51 @@
+using System;
+using System.IO;
+
+class Program
+{
+    static void Main()
+    {
+        string caminhoEntrada = "caminho/do/arquivo/usuarios.txt";
+        string caminhoSaida = "caminho/do/arquivo/relatório.txt";
+
+        long tamanhoTotalDisco = 53687091200; // Tamanho total do disco em bytes
+        long totalBytesUsados = 0;
+
+        try
+        {
+            StreamReader arquivo = new StreamReader(caminhoEntrada);
+            StreamWriter relatorio = new StreamWriter(caminhoSaida);
+
+            string linha;
+            while ((linha = arquivo.ReadLine()) != null)
+            {
+                string[] info = linha.Split('/');
+                if (info.Length == 2)
+                {
+                    string nome = info[0];
+                    long bytesUsados = long.Parse(info[1]);
+
+                    double percentualUso = (bytesUsados * 100.0) / tamanhoTotalDisco;
+
+                    relatorio.WriteLine($"{nome}/{percentualUso:F2}%");
+
+                    totalBytesUsados += bytesUsados;
+                }
+            }
+
+            double percentualTotal = (totalBytesUsados * 100.0) / tamanhoTotalDisco;
+
+            relatorio.WriteLine($"Total de espaço de disco ocupado: {totalBytesUsados} bytes");
+            relatorio.WriteLine($"Percentual de uso total do disco: {percentualTotal:F2}%");
+
+            arquivo.Close();
+            relatorio.Close();
+
+            Console.WriteLine("Relatório gerado com sucesso!");
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Exception: " + e.Message);
+        }
+    }
+}
