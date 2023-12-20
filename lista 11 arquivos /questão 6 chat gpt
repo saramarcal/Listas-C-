@@ -1,0 +1,74 @@
+06. Faça um programa que apure o resultado de uma votação para determinar o personagem
+animado favorito das pessoas. Suponha que existam cinco candidatos cujos códigos de
+identificação são:
+0. Perna Longa
+1. Pluto
+2. Mickey
+3. Bob Esponja
+4. Cebolinha
+Crie um arquivo texto (denominado “votos.txt”) que contém, em cada linha, um determinado voto
+(um voto é representado pelo código de identificação do candidato). O programa deverá
+apresentar, como resultado, o nome do candidato e a quantidade de votos do candidato mais
+votado, o código de identificação e a quantidade de votos do candidato menos votado e a
+quantidade de votos nulos (um voto nulo é um voto cujo código de identificação é um inteiro
+diferente de 0,1,2,3,4).
+Dica: crie vetores para fazer o processamento.
+
+código:
+
+using System;
+using System.IO;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        string caminhoEntrada = "caminho/do/arquivo/votos.txt";
+        string caminhoSaida = "caminho/do/arquivo/resultado.txt";
+
+        string[] candidatos = { "Perna Longa", "Pluto", "Mickey", "Bob Esponja", "Cebolinha" };
+        int[] votos = new int[5];
+        int votosNulos = 0;
+
+        try
+        {
+            StreamReader arquivo = new StreamReader(caminhoEntrada);
+            StreamWriter resultado = new StreamWriter(caminhoSaida);
+
+            string linha;
+            while ((linha = arquivo.ReadLine()) != null)
+            {
+                if (int.TryParse(linha, out int voto))
+                {
+                    if (voto >= 0 && voto <= 4)
+                    {
+                        votos[voto]++;
+                    }
+                    else
+                    {
+                        votosNulos++;
+                    }
+                }
+                else
+                {
+                    votosNulos++;
+                }
+            }
+
+            arquivo.Close();
+
+            int maisVotado = Array.IndexOf(votos, votos.Max());
+            int menosVotado = Array.IndexOf(votos, votos.Min());
+
+            resultado.WriteLine($"Candidato mais votado: {candidatos[maisVotado]}, Votos: {votos[maisVotado]}");
+            resultado.WriteLine($"Candidato menos votado: {candidatos[menosVotado]}, Votos: {votos[menosVotado]}");
+            resultado.WriteLine($"Votos nulos: {votosNulos}");
+
+            resultado.Close();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Exception: " + e.Message);
+        }
+    }
+}
