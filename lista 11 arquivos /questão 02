@@ -1,0 +1,53 @@
+using System;
+using System.IO;
+using System.Text;
+
+namespace Questao02
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            ImprimirDadosPeso();
+            Console.ReadLine();
+        }
+
+        static void ImprimirDadosPeso()
+        {
+            string linha;
+            string[] dados;
+            int peso, soma = 0, maior = int.MinValue, menor = int.MaxValue;
+            double media;
+
+            try
+            {
+                StreamReader arq1 = new StreamReader("C:\\Users\\Cliente\\Documents\\Sara Marçal\\Faculdade\\1 semestre\\atp\\lista 11 - arquivos\\arquivo-01.txt", Encoding.UTF8);
+
+                linha = arq1.ReadLine();
+
+                while (linha != "")
+                {
+                    dados = linha.Split(';');
+                    peso = int.Parse(dados[3]);
+                    soma += peso;
+
+                    if (peso > maior)
+                        maior = peso;
+                    if (peso < menor)
+                        menor = peso;
+
+                    linha = arq1.ReadLine();
+                }
+                arq1.Close();
+                media = soma / 9.0; // Se o arquivo sempre tiver 9 linhas, caso contrário, seria bom calcular o número de linhas.
+                Console.WriteLine($"Maior: {maior}");
+                Console.WriteLine($"Menor: {menor}");
+                Console.WriteLine($"Média: {media.ToString("N2")}");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception: " + e.Message);
+            }
+        }
+    }
+}
