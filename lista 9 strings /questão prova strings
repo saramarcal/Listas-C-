@@ -1,0 +1,32 @@
+using System;
+
+class Program
+{
+    public static void Main(string[] args)
+    {
+        Console.WriteLine("Informe o nome completo:");
+        string nomeCompleto = Console.ReadLine().ToLower();
+
+        string[] partesNome = nomeCompleto.Split(' ');
+
+        string primeiroNome = partesNome[0];
+        string iniciaisMeio = ExtrairIniciais(partesNome);
+        string ultimoNome = partesNome[partesNome.Length - 1];
+
+        string email = $"{primeiroNome}{iniciaisMeio}{ultimoNome}@gmail.com";
+
+        Console.WriteLine($"Email gerado: {email}");
+    }
+
+    static string ExtrairIniciais(string[] partesNome)
+    {
+        string iniciais = "";
+
+        for (int i = 1; i < partesNome.Length - 1; i++)
+        {
+            iniciais += partesNome[i][0]; // Adiciona a primeira letra de cada nome do meio
+        }
+
+        return iniciais;
+    }
+}
