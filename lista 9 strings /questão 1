@@ -1,0 +1,21 @@
+using System;
+
+class Program
+{
+    public static void Main(string[] args)
+    {
+      Console.WriteLine("Informe uma string:");
+      string palavra = Console.ReadLine();
+      Console.WriteLine("Informe um caractere:");
+      char caractere = char.Parse(Console.ReadLine());
+      int contLetra = 0;
+      foreach (char letra in palavra)
+      {
+        if (caractere == letra)
+        {
+          contLetra ++;
+        }
+      }
+      Console.WriteLine($"Na palavra {palavra} aparecem {contLetra} {char.ToUpper(caractere)}");
+    }
+}
