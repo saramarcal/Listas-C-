@@ -16,6 +16,6 @@ class Program
           contLetra ++;
         }
       }
-      Console.WriteLine($"Na palavra {palavra} aparecem {contLetra} {char.ToUpper(caractere)}");
+      Console.WriteLine($"Na palavra {palavra.ToUpper()} aparecem {contLetra} {char.ToUpper(caractere)}");
     }
 }
