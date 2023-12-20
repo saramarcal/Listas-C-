@@ -1,0 +1,55 @@
+
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            SalvarFelinosPorIntervalo();
+            Console.ReadLine();
+        }
+
+        static void SalvarFelinosPorIntervalo()
+        {
+            try
+            {
+                StreamReader arq1 = new StreamReader("C:\\Users\\Cliente\\Documents\\Sara Marçal\\Faculdade\\1 semestre\\atp\\lista 11 - arquivos\\arquivo-01.txt", Encoding.UTF8);
+                StreamReader arq2 = new StreamReader("C:\\Users\\Cliente\\Documents\\Sara Marçal\\Faculdade\\1 semestre\\atp\\lista 11 - arquivos\\arquivo-02.txt", Encoding.UTF8);
+
+                StreamWriter arq3 = new StreamWriter("C:\\Users\\Cliente\\Documents\\Sara Marçal\\Faculdade\\1 semestre\\atp\\lista 11 - arquivos\\arquivo-03.txt");
+
+                string linhaArq2;
+                int pesoMax;
+
+                arq3.WriteLine("Felinos nos intervalos:");
+
+                while ((linhaArq2 = arq2.ReadLine()) != null)
+                {
+                    string[] intervalos = linhaArq2.Split(';');
+                    int intervaloMin = int.Parse(intervalos[0]);
+                    int intervaloMax = int.Parse(intervalos[1]);
+
+                    arq1 = new StreamReader("C:\\Users\\Cliente\\Documents\\Sara Marçal\\Faculdade\\1 semestre\\atp\\lista 11 - arquivos\\arquivo-01.txt", Encoding.UTF8);
+
+                    string linhaArq1;
+                    while ((linhaArq1 = arq1.ReadLine()) != null)
+                    {
+                        string[] dados = linhaArq1.Split(';');
+                        pesoMax = int.Parse(dados[3]);
+
+                        if (pesoMax >= intervaloMin && pesoMax <= intervaloMax)
+                        {
+                            arq3.WriteLine(dados[0]);
+                        }
+                    }
+                }
+
+                arq1.Close();
+                arq2.Close();
+                arq3.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception: " + e.Message);
+            }
+        }
+    }
+}
