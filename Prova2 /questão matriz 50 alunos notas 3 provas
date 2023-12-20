@@ -1,0 +1,43 @@
+using System;
+
+class Program
+{
+    public static void Main(string[] args)
+    {
+        double[,] matrizNotas = new double[50, 3];
+        for (int aluno = 0; aluno < matrizNotas.GetLength(0); aluno++)
+        {
+            for (int prova = 0; prova < matrizNotas.GetLength(1); prova++)
+            {
+                Console.Write($"Digite a nota da prova {prova + 1} do aluno {aluno + 1}: ");
+                matrizNotas[aluno, prova] = double.Parse(Console.ReadLine());
+            }
+        }
+        int melhorNaProva1 = 0;
+        double somaProva2 = 0;
+        double menorProva3 = double.MaxValue;
+
+        for (int aluno = 0; aluno < 50; aluno++)
+        {
+            //  melhor nota do aluno foi na prova 1?
+            if (matrizNotas[aluno, 0] > matrizNotas[aluno, 1] && matrizNotas[aluno, 0] > matrizNotas[aluno, 2])
+            {
+                melhorNaProva1++;
+            }
+
+            //  soma das notas da prova 2
+            somaProva2 += matrizNotas[aluno, 1];
+
+            //  menor nota da prova 3
+            if (matrizNotas[aluno, 2] < menorProva3)
+            {
+                menorProva3 = matrizNotas[aluno, 2];
+            }
+
+        }
+        double mediaProva2 = somaProva2 / 50;
+        Console.WriteLine($"Alunos com melhor nota na Prova 1: {melhorNaProva1}");
+        Console.WriteLine($"Média das notas na Prova 2: {mediaProva2:F2}");
+        Console.WriteLine($"Menor nota na Prova 3: {menorProva3}");
+    }
+}
