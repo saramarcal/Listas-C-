@@ -1,0 +1,57 @@
+using System;
+using System.IO;
+using System.Text;
+
+namespace Questao04
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            ExibirFelinosPorIntervalo();
+            Console.ReadLine();
+        }
+
+        static void ExibirFelinosPorIntervalo()
+        {
+            try
+            {
+                StreamReader arq1 = new StreamReader("C:\\Users\\Cliente\\Documents\\Sara Marçal\\Faculdade\\1 semestre\\atp\\lista 11 - arquivos\\arquivo-01.txt", Encoding.UTF8);
+                StreamReader arq2 = new StreamReader("C:\\Users\\Cliente\\Documents\\Sara Marçal\\Faculdade\\1 semestre\\atp\\lista 11 - arquivos\\arquivo-02.txt", Encoding.UTF8);
+
+                string linhaArq2;
+                int pesoMax;
+
+                Console.WriteLine("Felinos nos intervalos:");
+
+                while ((linhaArq2 = arq2.ReadLine()) != null)
+                {
+                    string[] intervalos = linhaArq2.Split(';');
+                    int intervaloMin = int.Parse(intervalos[0]);
+                    int intervaloMax = int.Parse(intervalos[1]);
+
+                    arq1 = new StreamReader("C:\\Users\\Cliente\\Documents\\Sara Marçal\\Faculdade\\1 semestre\\atp\\lista 11 - arquivos\\arquivo-01.txt", Encoding.UTF8); // Reinicia o arquivo-01
+
+                    string linhaArq1;
+                    while ((linhaArq1 = arq1.ReadLine()) != null)
+                    {
+                        string[] dados = linhaArq1.Split(';');
+                        pesoMax = int.Parse(dados[3]);
+
+                        if (pesoMax >= intervaloMin && pesoMax <= intervaloMax)
+                        {
+                            Console.WriteLine(dados[0]);
+                        }
+                    }
+                }
+
+                arq1.Close();
+                arq2.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception: " + e.Message);
+            }
+        }
+    }
+}
