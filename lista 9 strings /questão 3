@@ -1,0 +1,32 @@
+using System;
+
+class Program
+{
+    public static void Main(string[] args)
+    {
+        Console.WriteLine("Informe a string :");
+        string palavra = Console.ReadLine().ToLower();
+
+        int vogais = 0;
+        int consoantes = 0;
+
+        foreach (char caractere in palavra)
+        {
+
+            if ("aeiou".Contains(caractere)) 
+            {
+                vogais++;
+            }
+            else e
+            {
+                consoantes++;
+            }
+
+        }
+
+        Console.WriteLine($"Número de vogais: {vogais}");
+        Console.WriteLine($"Número de consoantes: {consoantes}");
+
+
+    }
+}
