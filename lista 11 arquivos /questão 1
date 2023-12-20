@@ -1,0 +1,41 @@
+using System;
+using System.IO;
+using System.Text;
+
+namespace Questao01
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            ImprimirNomesCientificos();
+            Console.ReadLine();
+        }
+
+        static void ImprimirNomesCientificos()
+        {
+            string linha;
+            string[] dados;
+            try
+            {
+                StreamReader arq1 = new StreamReader("C:\\Users\\Cliente\\Documents\\Sara Marçal\\Faculdade\\1 semestre\\atp\\lista 11 - arquivos\\arquivo-01.txt", Encoding.UTF8);
+
+                linha = arq1.ReadLine();
+                Console.WriteLine("Nomes científicos de felinos disponíveis no arquivo:");
+                Console.WriteLine();
+                while (linha != "")
+                {
+                    dados = linha.Split(';');
+
+                    Console.WriteLine(dados[1]);
+                    linha = arq1.ReadLine();
+                }
+                arq1.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception: " + e.Message);
+            }
+        }
+    }
+}
