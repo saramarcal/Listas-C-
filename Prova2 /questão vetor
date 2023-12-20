@@ -17,9 +17,9 @@ class Program {
       nomesAtores[i] = Console.ReadLine();
     }
     Console.WriteLine();
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < 100; i++)
     {
-      Console.Write($"Eleitor{i}, informe seu voto: ");
+      Console.Write($"Eleitor {i}, informe seu voto: ");
       int voto = int.Parse(Console.ReadLine());
       votos[voto]++;
       
