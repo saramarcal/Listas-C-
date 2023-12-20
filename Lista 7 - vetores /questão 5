@@ -1,0 +1,113 @@
+using System;
+
+class Program
+{
+    public static void MostrarMenu() // metodo para imprimir menu na tela
+    {
+        Console.WriteLine("Menu de opções:");
+        Console.WriteLine("1. Mostrar menor nota");
+        Console.WriteLine("2. Mostrar maior nota");
+        Console.WriteLine("3. Pesquisar nota");
+        Console.WriteLine("4. Mostrar média das notas e quantidade de notas acima da média");
+        Console.WriteLine("5. Sair");
+    }
+    public static void Main(string[] args) // metodo principal
+    {
+        double[] vetorNotas = new double[200];
+        double somaNotas = 0;
+        for (int i = 0; i < vetorNotas.Length; i++) // vetor p/ ler as notas
+        {
+            Console.Write($"Informe a nota do aluno {i + 1}: ");
+            double nota = double.Parse(Console.ReadLine());
+            if (nota >= 0 && nota <= 100)
+            {
+                somaNotas += nota;
+                vetorNotas[i] = nota;
+            }
+            else
+            {
+                Console.WriteLine("Nota inválida. Tente Novamente");
+                i--; // descrementa o i para voltar ao inicio do loop
+            }
+        }
+        double menorNota = double.MaxValue;
+        double maiorNota = double.MinValue;
+        int alunoMenorNota = -1, alunoMaiorNota = -1;
+        for (int i = 0; i < vetorNotas.Length; i++) // laço de repetição para encontrar a menor e maior nota e a quem ela pertence
+        {
+            if (vetorNotas[i] < menorNota)
+            {
+                menorNota = vetorNotas[i];
+                alunoMenorNota = i;
+            }
+            if (vetorNotas[i] > maiorNota)
+            {
+                maiorNota = vetorNotas[i];
+                alunoMaiorNota = i;
+            }
+        }
+        Console.WriteLine();
+
+        MostrarMenu(); // chama menu
+
+        int opcao;
+        int contNotasAcimaMedia = 0;
+        do
+        {
+            Console.WriteLine();
+            Console.Write("Escolha uma opção: ");
+            opcao = int.Parse(Console.ReadLine());
+            switch (opcao)
+            {
+                case 1:
+                    Console.WriteLine($"A menor nota é {menorNota}, do aluno {alunoMenorNota + 1}");
+                    break;
+                case 2:
+                    Console.WriteLine($"A maior nota é {maiorNota}, do aluno {alunoMaiorNota + 1}");
+                    break;
+                case 3:
+                    Console.WriteLine($"Informe a nota que deseja pesquisar: ");
+                    double notaPesquisada = double.Parse(Console.ReadLine());
+                    bool encontrada = false; // variavel para verificar se a nota foi encontrada
+                    for (int i = 0; i < vetorNotas.Length; i++)
+                    {
+                        if (vetorNotas[i] == notaPesquisada)
+                        {
+                            Console.WriteLine($"A nota {notaPesquisada} foi encontrada! Ela pertence ao aluno {i + 1}");
+                            encontrada = true;
+                        }
+
+                    }
+                    if (encontrada == false)
+                    {
+                        Console.WriteLine("Nota não encontrada");
+                    }
+
+                    break;
+                case 4:
+                    double mediaNotas = somaNotas / vetorNotas.Length;
+                    for (int i = 0; i < vetorNotas.Length; i++)
+                    {
+                        if (vetorNotas[i] > mediaNotas)
+                        {
+                            contNotasAcimaMedia++;
+                        }
+                    }
+                    Console.WriteLine($"A média das notas é {(mediaNotas):F2}");
+                    Console.WriteLine($"A quantidade de notas acima da média é {contNotasAcimaMedia}");
+                    contNotasAcimaMedia = 0;
+                    break;
+                case 5:
+                    Console.WriteLine("Saindo... \n");
+                    Console.WriteLine("Programa encerrado!");
+                    break;
+
+                default:
+                    Console.WriteLine("Opção inválida");
+                    break;
+            }
+        }
+        while (opcao != 5); // faz com q o programa continue rodando enquanto a opção for diferente de 5
+        Console.ReadLine();
+    }
+}
